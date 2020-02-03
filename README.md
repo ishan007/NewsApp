@@ -8,7 +8,7 @@ To run unit test, click on test package and select "run test with coverage" opti
 ## Architecture
 App is built using Clean Architecture and MVVM.
 
-![Architecture](https://github.com/ishan007/LedgerApp/blob/master/app/sceenshots/architecture.png)
+![Architecture](https://github.com/ishan007/NewsApp/blob/master/app/screenshot/architecture.png)
 
 
 * **DI:** This module is responsible for providing dependencies to the objects.
