@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BulletinApp</string>
+    <string name="author_dummy_text">By some journalist</string>
+    <string name="no_internet_error">No Internet connection</string>
+    <string name="load_error">Something went wrong</string>
+    <string name="news_image">News image</string>
+</resources>
