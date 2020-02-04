@@ -37,13 +37,15 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            buildConfigField "String", "BASE_URL", '"http://api.nytimes.com/svc/mostpopular/"'
+            buildConfigField "String", "API_KEY", '"0aK9qwjnWivRBr2AJwmzR1LK39CgPmjG"'
+            buildConfigField "String", "BASE_URL", '"https://api.nytimes.com/svc/mostpopular/"'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         debug {
             minifyEnabled false
-            buildConfigField "String", "BASE_URL", '"http://api.nytimes.com/svc/mostpopular/"'
+            buildConfigField "String", "API_KEY", '"0aK9qwjnWivRBr2AJwmzR1LK39CgPmjG"'
+            buildConfigField "String", "BASE_URL", '"https://api.nytimes.com/svc/mostpopular/"'
         }
     }
 }

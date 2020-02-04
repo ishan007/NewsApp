@@ -9,8 +9,8 @@ import javax.inject.Singleton
 @Singleton
 class Repository @Inject constructor(private val remoteDataSource: RemoteDataSource){
 
-    fun getNewsList(section: String, period: Int): Observable<List<News>>{
-        return remoteDataSource.getNewsList(section, period)
+    fun getNewsList(): Observable<List<News>>{
+        return remoteDataSource.getNewsList()
     }
 
 }

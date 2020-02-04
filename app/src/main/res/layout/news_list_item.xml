@@ -26,7 +26,7 @@
                 android:id="@+id/news_iv"
                 android:layout_width="@dimen/news_thumbnail_size"
                 android:layout_height="@dimen/news_thumbnail_size"
-                app:imageUrl="@{news.imageUrl}"
+                app:imageUrl="@{news.media[0].metadataList[0].url}"
                 android:contentDescription="@string/news_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,6 @@
                 android:padding="@dimen/news_list_item_text_padding"
                 android:textSize="@dimen/news_list_author_text_size"
                 app:layout_constrainedWidth="true"
-                app:layout_constraintWidth_default="wrap"
                 app:layout_constraintStart_toEndOf="@id/news_iv"
                 app:layout_constraintTop_toBottomOf="@+id/headline_tv"/>
 

@@ -2,6 +2,7 @@ package com.example.bulletinapp.viewmodel.events
 
 import androidx.lifecycle.MutableLiveData
 import com.example.bulletinapp.util.Logger
+import com.example.bulletinapp.view.activity.NewsActivity
 import io.reactivex.Observer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -26,8 +27,8 @@ open class NewsObserver<T>(
     }
 
     override fun onError(e: Throwable) {
-        Logger.e("OnError delivery observable: ${e.message}")
-        onEvent.postValue(OnEvent(OnLoadPageError))
+        Logger.e("OnError News observable: ${e.message}")
+        onEvent.postValue(OnEvent(OnLoadPageError(NewsActivity::class.java)))
     }
 
 }

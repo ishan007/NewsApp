@@ -20,4 +20,9 @@ class OnEvent<out T>(private val event: T) {
         }
     }
 
+    /**
+     * Observer can peek event before consuming it
+     */
+    fun peekEvent(): T = event
+
 }

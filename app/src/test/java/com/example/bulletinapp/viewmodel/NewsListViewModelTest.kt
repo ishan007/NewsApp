@@ -5,7 +5,6 @@ import com.example.bulletinapp.BaseUnitTest
 import com.example.bulletinapp.DataGeneratorTest
 import com.example.bulletinapp.domain.entities.News
 import com.example.bulletinapp.domain.usecase.GetNewsListUseCase
-import com.example.bulletinapp.util.NetworkConstants
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
 import org.junit.Rule
@@ -30,10 +29,10 @@ class NewsListViewModelTest : BaseUnitTest() {
 
     @Test
     fun testDeliveryList(){
-        val list = DataGeneratorTest.getNewsList()
+        val newsResponse = DataGeneratorTest.newsResponse()
 
-        Mockito.`when`(getNewsListUseCase.getNewsList(NetworkConstants.SECTION, NetworkConstants.PERIOD))
-            .thenReturn(Observable.just(list))
+        Mockito.`when`(getNewsListUseCase.getNewsList())
+            .thenReturn(Observable.just(newsResponse.newsList))
         val deliveryListObservable = newsListViewModel.newsList
 
         val testObserver = TestObserver<List<News>>()
@@ -42,7 +41,7 @@ class NewsListViewModelTest : BaseUnitTest() {
         testObserver.awaitCount(1)
         testObserver.assertValueCount(1)
         testObserver.assertValue {
-            it.size == list.size
+            it.size == newsResponse.newsList.size
         }
         testObserver.dispose()
 
@@ -55,7 +54,7 @@ class NewsListViewModelTest : BaseUnitTest() {
         val testObserver = TestObserver<List<News>>()
 
         val errorOnRefreshData = Observable.error<List<News>>(IOException())
-        Mockito.`when`(getNewsListUseCase.getNewsList(NetworkConstants.SECTION, NetworkConstants.PERIOD))
+        Mockito.`when`(getNewsListUseCase.getNewsList())
             .thenReturn(errorOnRefreshData)
         val refreshDataResult = newsListViewModel.newsList
 

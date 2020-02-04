@@ -14,6 +14,7 @@ import com.example.bulletinapp.databinding.FragmentNewsListBinding
 import com.example.bulletinapp.di.application.BulletinApplication
 import com.example.bulletinapp.domain.entities.News
 import com.example.bulletinapp.util.NetworkUtil
+import com.example.bulletinapp.view.activity.NewsActivity
 import com.example.bulletinapp.view.adapter.NewsListAdapter
 import com.example.bulletinapp.viewmodel.NewsActivitySharedViewModel
 import com.example.bulletinapp.viewmodel.NewsListViewModel
@@ -21,6 +22,7 @@ import com.example.bulletinapp.viewmodel.events.NewsObserver
 import com.example.bulletinapp.viewmodel.events.OnEvent
 import com.example.bulletinapp.viewmodel.events.OnNewsItemSelected
 import com.google.android.material.snackbar.Snackbar
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -53,7 +55,7 @@ class NewsListFragment : Fragment() {
     private val adapter: NewsListAdapter by lazy {
         NewsListAdapter(newsList, NewsListAdapter.NewsSelectionListener {
             newsActivitySharedViewModel.onNewsSelection(it)
-            onEventObserver.value = OnEvent(OnNewsItemSelected)
+            onEventObserver.value = OnEvent(OnNewsItemSelected(NewsActivity::class.java))
         })
     }
 
@@ -96,7 +98,8 @@ class NewsListFragment : Fragment() {
 
     private fun loadData(){
         if(networkUtil.isNetworkConnected()){
-            newsListViewModel.newsList.subscribe(object : NewsObserver<List<News>>(onEventObserver, disposable){
+            newsListViewModel.newsList.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : NewsObserver<List<News>>(onEventObserver, disposable){
 
                 override fun onComplete() {
                     super.onComplete()

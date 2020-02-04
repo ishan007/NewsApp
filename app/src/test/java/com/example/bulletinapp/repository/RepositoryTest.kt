@@ -4,7 +4,6 @@ import com.example.bulletinapp.BaseUnitTest
 import com.example.bulletinapp.DataGeneratorTest
 import com.example.bulletinapp.domain.entities.News
 import com.example.bulletinapp.repository.network.RemoteDataSource
-import com.example.bulletinapp.util.NetworkConstants
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
 import org.junit.Test
@@ -25,15 +24,15 @@ class RepositoryTest : BaseUnitTest(){
 
     @Test
     fun testListFromApi(){
-        val list =
-            DataGeneratorTest.getNewsList()
-        Mockito.`when`(remoteDataSource.getNewsList(NetworkConstants.SECTION, NetworkConstants.PERIOD))
-            .thenReturn(Observable.just(list))
+        val newsResponse =
+            DataGeneratorTest.newsResponse()
+        Mockito.`when`(remoteDataSource.getNewsList())
+            .thenReturn(Observable.just(newsResponse.newsList))
 
-        val observable = repository.getNewsList(NetworkConstants.SECTION, NetworkConstants.PERIOD)
+        val observable = repository.getNewsList()
         val testObserver = TestObserver<List<News>>()
         observable.subscribe(testObserver)
-        testObserver.assertValue(list)
+        testObserver.assertValue(newsResponse.newsList)
     }
 
 }

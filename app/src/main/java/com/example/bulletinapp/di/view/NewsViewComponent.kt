@@ -1,9 +1,9 @@
 package com.example.bulletinapp.di.view
 
-import com.example.bulletinapp.view.fragment.NewsDetailFragment
-import com.example.bulletinapp.view.fragment.NewsListFragment
 import com.example.bulletinapp.view.activity.NewsActivity
 import com.example.bulletinapp.view.activity.SplashActivity
+import com.example.bulletinapp.view.fragment.NewsDetailFragment
+import com.example.bulletinapp.view.fragment.NewsListFragment
 import dagger.Subcomponent
 
 @ActivityScope

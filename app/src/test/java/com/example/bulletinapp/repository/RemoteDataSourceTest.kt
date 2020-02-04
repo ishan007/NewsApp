@@ -1,6 +1,7 @@
 package com.example.bulletinapp.repository
 
 import com.example.bulletinapp.BaseUnitTest
+import com.example.bulletinapp.BuildConfig
 import com.example.bulletinapp.DataGeneratorTest
 import com.example.bulletinapp.domain.entities.News
 import com.example.bulletinapp.repository.network.RemoteDataSource
@@ -24,12 +25,14 @@ class RemoteDataSourceTest : BaseUnitTest(){
 
     @Test
     fun getNewsListFromApi(){
-        val list = DataGeneratorTest.getNewsList()
-        Mockito.`when`(requestApi.getNewsList(NetworkConstants.SECTION, NetworkConstants.PERIOD,"sample-key"))
-            .thenReturn(Observable.just(list))
-        val observable = remoteDataSource.getNewsList(NetworkConstants.SECTION, NetworkConstants.PERIOD)
+        val newsResponse = DataGeneratorTest.newsResponse()
+
+        Mockito.`when`(requestApi.getNewsList(NetworkConstants.PERIOD, BuildConfig.API_KEY))
+            .thenReturn(Observable.just(newsResponse))
+
+        val observable = remoteDataSource.getNewsList()
         val testObserver = TestObserver<List<News>>()
         observable.subscribe(testObserver)
-        testObserver.assertValue(list)
+        testObserver.assertValue(newsResponse.newsList)
     }
 }

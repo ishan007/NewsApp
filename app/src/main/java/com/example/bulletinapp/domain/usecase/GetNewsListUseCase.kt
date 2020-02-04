@@ -5,5 +5,5 @@ import io.reactivex.Observable
 
 interface GetNewsListUseCase {
 
-    fun getNewsList(section: String, period: Int): Observable<List<News>>
+    fun getNewsList(): Observable<List<News>>
 }

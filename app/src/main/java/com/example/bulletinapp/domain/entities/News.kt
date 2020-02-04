@@ -1,8 +1,11 @@
 package com.example.bulletinapp.domain.entities
 
-data class News(val id: String,
-                val imageUrl: String,
-                val headline: String,
-                val newsDetail: String,
-                val author: String,
-                val date: String)
+import com.google.gson.annotations.SerializedName
+
+data class News(@SerializedName("id") val id: String,
+                @SerializedName("url") val imageUrl: String,
+                @SerializedName("title") val headline: String,
+                @SerializedName("abstract") val newsDetail: String,
+                @SerializedName("byline") val author: String,
+                @SerializedName("published_date") val date: String,
+                @SerializedName("media") val media: List<Media>)
