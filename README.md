@@ -1,6 +1,6 @@
 # NewsApp
 A sample app.
-<img src="https://github.com/ishan007/NewsApp/blob/master/app/screenshot/screenshot_app.png" width="200" />
+<img src="https://github.com/ishan007/NewsApp/blob/master/app/screenshot/screenshot_home.png" width="200" />
 
 # How to setup
 Clone the project in your local machine and open it in android studio.
