@@ -1,5 +1,7 @@
 # NewsApp
-A sample master/detail app.
+A sample app.
+![HomeScreen](https://github.com/ishan007/NewsApp/blob/master/app/screenshot/Screenshot_App.png)
+
 
 # How to setup
 Clone the project in your local machine and open it in android studio.
